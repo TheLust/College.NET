@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="eb5e910d45fd49d98122cb7fb9ba2312" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="colegiuModel.Catedre" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="colegiuModel.grupa" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="colegiuModel.localit" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="colegiuModel.notele" Width="1.5" PointX="7.5" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="colegiuModel.objstgr" Width="1.5" PointX="10.5" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="colegiuModel.objstud" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="colegiuModel.profesor" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="colegiuModel.raion" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="colegiuModel.spec" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="colegiuModel.student" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="colegiuModel.v_catedre" Width="1.5" PointX="7.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="colegiuModel.v_Localit" Width="1.5" PointX="5.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="colegiuModel.v_Objstud" Width="1.5" PointX="7.75" PointY="9.125" IsExpanded="true" />
+        <AssociationConnector Association="colegiuModel.FK_Catedre_idprofesor" ManuallyRouted="false" />
+        <AssociationConnector Association="colegiuModel.FK_Objstud_idcatedre" ManuallyRouted="false" />
+        <AssociationConnector Association="colegiuModel.FK_Grupa_idprofesor" ManuallyRouted="false" />
+        <AssociationConnector Association="colegiuModel.FK_Grupa_idspec" ManuallyRouted="false" />
+        <AssociationConnector Association="colegiuModel.FK_Objstgr_idgrupa" ManuallyRouted="false" />
+        <AssociationConnector Association="colegiuModel.FK_Student_idgrupa" ManuallyRouted="false" />
+        <AssociationConnector Association="colegiuModel.FK_Localit_idraion" ManuallyRouted="false" />
+        <AssociationConnector Association="colegiuModel.FK_Student_idlocalit" ManuallyRouted="false" />
+        <AssociationConnector Association="colegiuModel.FK_Notele_idobjstud" ManuallyRouted="false" />
+        <AssociationConnector Association="colegiuModel.FK_Notele_idstudent" ManuallyRouted="false" />
+        <AssociationConnector Association="colegiuModel.FK_Objstgr_idobjstud" ManuallyRouted="false" />
+        <AssociationConnector Association="colegiuModel.FK_Objstgr_idprofesor" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

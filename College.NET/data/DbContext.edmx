@@ -1,0 +1,868 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="colegiuModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Catedre">
+          <Key>
+            <PropertyRef Name="idcatedre" />
+          </Key>
+          <Property Name="idcatedre" Type="int" Nullable="false" />
+          <Property Name="nmcatedre" Type="char" MaxLength="50" />
+          <Property Name="idprofesor" Type="int" />
+        </EntityType>
+        <EntityType Name="grupa">
+          <Key>
+            <PropertyRef Name="idgrupa" />
+          </Key>
+          <Property Name="idgrupa" Type="int" Nullable="false" />
+          <Property Name="nmgrupa" Type="char" MaxLength="30" />
+          <Property Name="anadm" Type="int" />
+          <Property Name="idprofesor" Type="int" />
+          <Property Name="idspec" Type="int" />
+        </EntityType>
+        <EntityType Name="localit">
+          <Key>
+            <PropertyRef Name="idlocalit" />
+          </Key>
+          <Property Name="idlocalit" Type="int" Nullable="false" />
+          <Property Name="nmlocalit" Type="char" MaxLength="50" />
+          <Property Name="idraion" Type="int" />
+        </EntityType>
+        <EntityType Name="notele">
+          <Key>
+            <PropertyRef Name="idnotele" />
+          </Key>
+          <Property Name="idnotele" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idstudent" Type="int" />
+          <Property Name="idobjstud" Type="int" />
+          <Property Name="data" Type="date" />
+          <Property Name="nota" Type="decimal" Precision="4" Scale="2" />
+        </EntityType>
+        <EntityType Name="objstgr">
+          <Key>
+            <PropertyRef Name="idobjstgr" />
+          </Key>
+          <Property Name="idobjstgr" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idgrupa" Type="int" />
+          <Property Name="idobjstud" Type="int" />
+          <Property Name="idprofesor" Type="int" />
+        </EntityType>
+        <EntityType Name="objstud">
+          <Key>
+            <PropertyRef Name="idobjstud" />
+          </Key>
+          <Property Name="idobjstud" Type="int" Nullable="false" />
+          <Property Name="nmobjstud" Type="char" MaxLength="50" />
+          <Property Name="idcatedre" Type="int" />
+        </EntityType>
+        <EntityType Name="profesor">
+          <Key>
+            <PropertyRef Name="idprofesor" />
+          </Key>
+          <Property Name="idprofesor" Type="int" Nullable="false" />
+          <Property Name="nmprofesor" Type="char" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="raion">
+          <Key>
+            <PropertyRef Name="idraion" />
+          </Key>
+          <Property Name="idraion" Type="int" Nullable="false" />
+          <Property Name="nmraion" Type="char" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="spec">
+          <Key>
+            <PropertyRef Name="idspec" />
+          </Key>
+          <Property Name="idspec" Type="int" Nullable="false" />
+          <Property Name="nmspec" Type="char" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="student">
+          <Key>
+            <PropertyRef Name="idstudent" />
+          </Key>
+          <Property Name="idstudent" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nmstud" Type="char" MaxLength="50" />
+          <Property Name="prenstud" Type="char" MaxLength="50" />
+          <Property Name="patrstud" Type="char" MaxLength="50" />
+          <Property Name="sexstud" Type="char" MaxLength="1" />
+          <Property Name="Ncarnet" Type="char" MaxLength="10" />
+          <Property Name="DataNs" Type="date" />
+          <Property Name="GSM" Type="char" MaxLength="15" />
+          <Property Name="idgrupa" Type="int" />
+          <Property Name="idlocalit" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'colegiu.dbo.v_catedre' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_catedre">
+          <Key>
+            <PropertyRef Name="idcatedre" />
+          </Key>
+          <Property Name="idcatedre" Type="int" Nullable="false" />
+          <Property Name="nmcatedre" Type="char" MaxLength="50" />
+          <Property Name="idprofesor" Type="int" />
+          <Property Name="nmprofesor" Type="char" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'colegiu.dbo.v_Localit' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_Localit">
+          <Key>
+            <PropertyRef Name="idlocalit" />
+          </Key>
+          <Property Name="idlocalit" Type="int" Nullable="false" />
+          <Property Name="nmlocalit" Type="char" MaxLength="50" />
+          <Property Name="idraion" Type="int" />
+          <Property Name="nmraion" Type="char" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'colegiu.dbo.v_Objstud' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_Objstud">
+          <Key>
+            <PropertyRef Name="idObjstud" />
+          </Key>
+          <Property Name="idObjstud" Type="int" Nullable="false" />
+          <Property Name="nmObjstud" Type="char" MaxLength="50" />
+          <Property Name="idcatedre" Type="int" />
+          <Property Name="nmcatedre" Type="char" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Catedre_idprofesor">
+          <End Role="profesor" Type="Self.profesor" Multiplicity="0..1" />
+          <End Role="Catedre" Type="Self.Catedre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="profesor">
+              <PropertyRef Name="idprofesor" />
+            </Principal>
+            <Dependent Role="Catedre">
+              <PropertyRef Name="idprofesor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Grupa_idprofesor">
+          <End Role="profesor" Type="Self.profesor" Multiplicity="0..1" />
+          <End Role="grupa" Type="Self.grupa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="profesor">
+              <PropertyRef Name="idprofesor" />
+            </Principal>
+            <Dependent Role="grupa">
+              <PropertyRef Name="idprofesor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Grupa_idspec">
+          <End Role="spec" Type="Self.spec" Multiplicity="0..1" />
+          <End Role="grupa" Type="Self.grupa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="spec">
+              <PropertyRef Name="idspec" />
+            </Principal>
+            <Dependent Role="grupa">
+              <PropertyRef Name="idspec" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Localit_idraion">
+          <End Role="raion" Type="Self.raion" Multiplicity="0..1" />
+          <End Role="localit" Type="Self.localit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="raion">
+              <PropertyRef Name="idraion" />
+            </Principal>
+            <Dependent Role="localit">
+              <PropertyRef Name="idraion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notele_idobjstud">
+          <End Role="objstud" Type="Self.objstud" Multiplicity="0..1" />
+          <End Role="notele" Type="Self.notele" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="objstud">
+              <PropertyRef Name="idobjstud" />
+            </Principal>
+            <Dependent Role="notele">
+              <PropertyRef Name="idobjstud" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notele_idstudent">
+          <End Role="student" Type="Self.student" Multiplicity="0..1" />
+          <End Role="notele" Type="Self.notele" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="student">
+              <PropertyRef Name="idstudent" />
+            </Principal>
+            <Dependent Role="notele">
+              <PropertyRef Name="idstudent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Objstgr_idgrupa">
+          <End Role="grupa" Type="Self.grupa" Multiplicity="0..1" />
+          <End Role="objstgr" Type="Self.objstgr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="grupa">
+              <PropertyRef Name="idgrupa" />
+            </Principal>
+            <Dependent Role="objstgr">
+              <PropertyRef Name="idgrupa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Objstgr_idobjstud">
+          <End Role="objstud" Type="Self.objstud" Multiplicity="0..1" />
+          <End Role="objstgr" Type="Self.objstgr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="objstud">
+              <PropertyRef Name="idobjstud" />
+            </Principal>
+            <Dependent Role="objstgr">
+              <PropertyRef Name="idobjstud" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Objstgr_idprofesor">
+          <End Role="profesor" Type="Self.profesor" Multiplicity="0..1" />
+          <End Role="objstgr" Type="Self.objstgr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="profesor">
+              <PropertyRef Name="idprofesor" />
+            </Principal>
+            <Dependent Role="objstgr">
+              <PropertyRef Name="idprofesor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Objstud_idcatedre">
+          <End Role="Catedre" Type="Self.Catedre" Multiplicity="0..1" />
+          <End Role="objstud" Type="Self.objstud" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Catedre">
+              <PropertyRef Name="idcatedre" />
+            </Principal>
+            <Dependent Role="objstud">
+              <PropertyRef Name="idcatedre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_idgrupa">
+          <End Role="grupa" Type="Self.grupa" Multiplicity="0..1" />
+          <End Role="student" Type="Self.student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="grupa">
+              <PropertyRef Name="idgrupa" />
+            </Principal>
+            <Dependent Role="student">
+              <PropertyRef Name="idgrupa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_idlocalit">
+          <End Role="localit" Type="Self.localit" Multiplicity="0..1" />
+          <End Role="student" Type="Self.student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="localit">
+              <PropertyRef Name="idlocalit" />
+            </Principal>
+            <Dependent Role="student">
+              <PropertyRef Name="idlocalit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="colegiuModelStoreContainer">
+          <EntitySet Name="Catedre" EntityType="Self.Catedre" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="grupa" EntityType="Self.grupa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="localit" EntityType="Self.localit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="notele" EntityType="Self.notele" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="objstgr" EntityType="Self.objstgr" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="objstud" EntityType="Self.objstud" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="profesor" EntityType="Self.profesor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="raion" EntityType="Self.raion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="spec" EntityType="Self.spec" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="student" EntityType="Self.student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="v_catedre" EntityType="Self.v_catedre" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_catedre].[idcatedre] AS [idcatedre], 
+    [v_catedre].[nmcatedre] AS [nmcatedre], 
+    [v_catedre].[idprofesor] AS [idprofesor], 
+    [v_catedre].[nmprofesor] AS [nmprofesor]
+    FROM [dbo].[v_catedre] AS [v_catedre]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_Localit" EntityType="Self.v_Localit" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_Localit].[idlocalit] AS [idlocalit], 
+    [v_Localit].[nmlocalit] AS [nmlocalit], 
+    [v_Localit].[idraion] AS [idraion], 
+    [v_Localit].[nmraion] AS [nmraion]
+    FROM [dbo].[v_Localit] AS [v_Localit]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_Objstud" EntityType="Self.v_Objstud" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_Objstud].[idObjstud] AS [idObjstud], 
+    [v_Objstud].[nmObjstud] AS [nmObjstud], 
+    [v_Objstud].[idcatedre] AS [idcatedre], 
+    [v_Objstud].[nmcatedre] AS [nmcatedre]
+    FROM [dbo].[v_Objstud] AS [v_Objstud]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Catedre_idprofesor" Association="Self.FK_Catedre_idprofesor">
+            <End Role="profesor" EntitySet="profesor" />
+            <End Role="Catedre" EntitySet="Catedre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Grupa_idprofesor" Association="Self.FK_Grupa_idprofesor">
+            <End Role="profesor" EntitySet="profesor" />
+            <End Role="grupa" EntitySet="grupa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Grupa_idspec" Association="Self.FK_Grupa_idspec">
+            <End Role="spec" EntitySet="spec" />
+            <End Role="grupa" EntitySet="grupa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Localit_idraion" Association="Self.FK_Localit_idraion">
+            <End Role="raion" EntitySet="raion" />
+            <End Role="localit" EntitySet="localit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notele_idobjstud" Association="Self.FK_Notele_idobjstud">
+            <End Role="objstud" EntitySet="objstud" />
+            <End Role="notele" EntitySet="notele" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notele_idstudent" Association="Self.FK_Notele_idstudent">
+            <End Role="student" EntitySet="student" />
+            <End Role="notele" EntitySet="notele" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Objstgr_idgrupa" Association="Self.FK_Objstgr_idgrupa">
+            <End Role="grupa" EntitySet="grupa" />
+            <End Role="objstgr" EntitySet="objstgr" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Objstgr_idobjstud" Association="Self.FK_Objstgr_idobjstud">
+            <End Role="objstud" EntitySet="objstud" />
+            <End Role="objstgr" EntitySet="objstgr" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Objstgr_idprofesor" Association="Self.FK_Objstgr_idprofesor">
+            <End Role="profesor" EntitySet="profesor" />
+            <End Role="objstgr" EntitySet="objstgr" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Objstud_idcatedre" Association="Self.FK_Objstud_idcatedre">
+            <End Role="Catedre" EntitySet="Catedre" />
+            <End Role="objstud" EntitySet="objstud" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_idgrupa" Association="Self.FK_Student_idgrupa">
+            <End Role="grupa" EntitySet="grupa" />
+            <End Role="student" EntitySet="student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_idlocalit" Association="Self.FK_Student_idlocalit">
+            <End Role="localit" EntitySet="localit" />
+            <End Role="student" EntitySet="student" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="colegiuModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Catedre">
+          <Key>
+            <PropertyRef Name="idcatedre" />
+          </Key>
+          <Property Name="idcatedre" Type="Int32" Nullable="false" />
+          <Property Name="nmcatedre" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="idprofesor" Type="Int32" />
+          <NavigationProperty Name="profesor" Relationship="Self.FK_Catedre_idprofesor" FromRole="Catedre" ToRole="profesor" />
+          <NavigationProperty Name="objstuds" Relationship="Self.FK_Objstud_idcatedre" FromRole="Catedre" ToRole="objstud" />
+        </EntityType>
+        <EntityType Name="grupa">
+          <Key>
+            <PropertyRef Name="idgrupa" />
+          </Key>
+          <Property Name="idgrupa" Type="Int32" Nullable="false" />
+          <Property Name="nmgrupa" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="anadm" Type="Int32" />
+          <Property Name="idprofesor" Type="Int32" />
+          <Property Name="idspec" Type="Int32" />
+          <NavigationProperty Name="profesor" Relationship="Self.FK_Grupa_idprofesor" FromRole="grupa" ToRole="profesor" />
+          <NavigationProperty Name="spec" Relationship="Self.FK_Grupa_idspec" FromRole="grupa" ToRole="spec" />
+          <NavigationProperty Name="objstgrs" Relationship="Self.FK_Objstgr_idgrupa" FromRole="grupa" ToRole="objstgr" />
+          <NavigationProperty Name="students" Relationship="Self.FK_Student_idgrupa" FromRole="grupa" ToRole="student" />
+        </EntityType>
+        <EntityType Name="localit">
+          <Key>
+            <PropertyRef Name="idlocalit" />
+          </Key>
+          <Property Name="idlocalit" Type="Int32" Nullable="false" />
+          <Property Name="nmlocalit" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="idraion" Type="Int32" />
+          <NavigationProperty Name="raion" Relationship="Self.FK_Localit_idraion" FromRole="localit" ToRole="raion" />
+          <NavigationProperty Name="students" Relationship="Self.FK_Student_idlocalit" FromRole="localit" ToRole="student" />
+        </EntityType>
+        <EntityType Name="notele">
+          <Key>
+            <PropertyRef Name="idnotele" />
+          </Key>
+          <Property Name="idnotele" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idstudent" Type="Int32" />
+          <Property Name="idobjstud" Type="Int32" />
+          <Property Name="data" Type="DateTime" Precision="0" />
+          <Property Name="nota" Type="Decimal" Precision="4" Scale="2" />
+          <NavigationProperty Name="objstud" Relationship="Self.FK_Notele_idobjstud" FromRole="notele" ToRole="objstud" />
+          <NavigationProperty Name="student" Relationship="Self.FK_Notele_idstudent" FromRole="notele" ToRole="student" />
+        </EntityType>
+        <EntityType Name="objstgr">
+          <Key>
+            <PropertyRef Name="idobjstgr" />
+          </Key>
+          <Property Name="idobjstgr" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idgrupa" Type="Int32" />
+          <Property Name="idobjstud" Type="Int32" />
+          <Property Name="idprofesor" Type="Int32" />
+          <NavigationProperty Name="grupa" Relationship="Self.FK_Objstgr_idgrupa" FromRole="objstgr" ToRole="grupa" />
+          <NavigationProperty Name="objstud" Relationship="Self.FK_Objstgr_idobjstud" FromRole="objstgr" ToRole="objstud" />
+          <NavigationProperty Name="profesor" Relationship="Self.FK_Objstgr_idprofesor" FromRole="objstgr" ToRole="profesor" />
+        </EntityType>
+        <EntityType Name="objstud">
+          <Key>
+            <PropertyRef Name="idobjstud" />
+          </Key>
+          <Property Name="idobjstud" Type="Int32" Nullable="false" />
+          <Property Name="nmobjstud" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="idcatedre" Type="Int32" />
+          <NavigationProperty Name="Catedre" Relationship="Self.FK_Objstud_idcatedre" FromRole="objstud" ToRole="Catedre" />
+          <NavigationProperty Name="noteles" Relationship="Self.FK_Notele_idobjstud" FromRole="objstud" ToRole="notele" />
+          <NavigationProperty Name="objstgrs" Relationship="Self.FK_Objstgr_idobjstud" FromRole="objstud" ToRole="objstgr" />
+        </EntityType>
+        <EntityType Name="profesor">
+          <Key>
+            <PropertyRef Name="idprofesor" />
+          </Key>
+          <Property Name="idprofesor" Type="Int32" Nullable="false" />
+          <Property Name="nmprofesor" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Catedres" Relationship="Self.FK_Catedre_idprofesor" FromRole="profesor" ToRole="Catedre" />
+          <NavigationProperty Name="grupas" Relationship="Self.FK_Grupa_idprofesor" FromRole="profesor" ToRole="grupa" />
+          <NavigationProperty Name="objstgrs" Relationship="Self.FK_Objstgr_idprofesor" FromRole="profesor" ToRole="objstgr" />
+        </EntityType>
+        <EntityType Name="raion">
+          <Key>
+            <PropertyRef Name="idraion" />
+          </Key>
+          <Property Name="idraion" Type="Int32" Nullable="false" />
+          <Property Name="nmraion" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="localits" Relationship="Self.FK_Localit_idraion" FromRole="raion" ToRole="localit" />
+        </EntityType>
+        <EntityType Name="spec">
+          <Key>
+            <PropertyRef Name="idspec" />
+          </Key>
+          <Property Name="idspec" Type="Int32" Nullable="false" />
+          <Property Name="nmspec" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="grupas" Relationship="Self.FK_Grupa_idspec" FromRole="spec" ToRole="grupa" />
+        </EntityType>
+        <EntityType Name="student">
+          <Key>
+            <PropertyRef Name="idstudent" />
+          </Key>
+          <Property Name="idstudent" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nmstud" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="prenstud" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="patrstud" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="sexstud" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Ncarnet" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="DataNs" Type="DateTime" Precision="0" />
+          <Property Name="GSM" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="idgrupa" Type="Int32" />
+          <Property Name="idlocalit" Type="Int32" />
+          <NavigationProperty Name="grupa" Relationship="Self.FK_Student_idgrupa" FromRole="student" ToRole="grupa" />
+          <NavigationProperty Name="localit" Relationship="Self.FK_Student_idlocalit" FromRole="student" ToRole="localit" />
+          <NavigationProperty Name="noteles" Relationship="Self.FK_Notele_idstudent" FromRole="student" ToRole="notele" />
+        </EntityType>
+        <EntityType Name="v_catedre">
+          <Key>
+            <PropertyRef Name="idcatedre" />
+          </Key>
+          <Property Name="idcatedre" Type="Int32" Nullable="false" />
+          <Property Name="nmcatedre" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="idprofesor" Type="Int32" />
+          <Property Name="nmprofesor" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="v_Localit">
+          <Key>
+            <PropertyRef Name="idlocalit" />
+          </Key>
+          <Property Name="idlocalit" Type="Int32" Nullable="false" />
+          <Property Name="nmlocalit" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="idraion" Type="Int32" />
+          <Property Name="nmraion" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="v_Objstud">
+          <Key>
+            <PropertyRef Name="idObjstud" />
+          </Key>
+          <Property Name="idObjstud" Type="Int32" Nullable="false" />
+          <Property Name="nmObjstud" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="idcatedre" Type="Int32" />
+          <Property Name="nmcatedre" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_Catedre_idprofesor">
+          <End Role="profesor" Type="Self.profesor" Multiplicity="0..1" />
+          <End Role="Catedre" Type="Self.Catedre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="profesor">
+              <PropertyRef Name="idprofesor" />
+            </Principal>
+            <Dependent Role="Catedre">
+              <PropertyRef Name="idprofesor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Objstud_idcatedre">
+          <End Role="Catedre" Type="Self.Catedre" Multiplicity="0..1" />
+          <End Role="objstud" Type="Self.objstud" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Catedre">
+              <PropertyRef Name="idcatedre" />
+            </Principal>
+            <Dependent Role="objstud">
+              <PropertyRef Name="idcatedre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Grupa_idprofesor">
+          <End Role="profesor" Type="Self.profesor" Multiplicity="0..1" />
+          <End Role="grupa" Type="Self.grupa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="profesor">
+              <PropertyRef Name="idprofesor" />
+            </Principal>
+            <Dependent Role="grupa">
+              <PropertyRef Name="idprofesor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Grupa_idspec">
+          <End Role="spec" Type="Self.spec" Multiplicity="0..1" />
+          <End Role="grupa" Type="Self.grupa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="spec">
+              <PropertyRef Name="idspec" />
+            </Principal>
+            <Dependent Role="grupa">
+              <PropertyRef Name="idspec" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Objstgr_idgrupa">
+          <End Role="grupa" Type="Self.grupa" Multiplicity="0..1" />
+          <End Role="objstgr" Type="Self.objstgr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="grupa">
+              <PropertyRef Name="idgrupa" />
+            </Principal>
+            <Dependent Role="objstgr">
+              <PropertyRef Name="idgrupa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_idgrupa">
+          <End Role="grupa" Type="Self.grupa" Multiplicity="0..1" />
+          <End Role="student" Type="Self.student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="grupa">
+              <PropertyRef Name="idgrupa" />
+            </Principal>
+            <Dependent Role="student">
+              <PropertyRef Name="idgrupa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Localit_idraion">
+          <End Role="raion" Type="Self.raion" Multiplicity="0..1" />
+          <End Role="localit" Type="Self.localit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="raion">
+              <PropertyRef Name="idraion" />
+            </Principal>
+            <Dependent Role="localit">
+              <PropertyRef Name="idraion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_idlocalit">
+          <End Role="localit" Type="Self.localit" Multiplicity="0..1" />
+          <End Role="student" Type="Self.student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="localit">
+              <PropertyRef Name="idlocalit" />
+            </Principal>
+            <Dependent Role="student">
+              <PropertyRef Name="idlocalit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notele_idobjstud">
+          <End Role="objstud" Type="Self.objstud" Multiplicity="0..1" />
+          <End Role="notele" Type="Self.notele" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="objstud">
+              <PropertyRef Name="idobjstud" />
+            </Principal>
+            <Dependent Role="notele">
+              <PropertyRef Name="idobjstud" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notele_idstudent">
+          <End Role="student" Type="Self.student" Multiplicity="0..1" />
+          <End Role="notele" Type="Self.notele" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="student">
+              <PropertyRef Name="idstudent" />
+            </Principal>
+            <Dependent Role="notele">
+              <PropertyRef Name="idstudent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Objstgr_idobjstud">
+          <End Role="objstud" Type="Self.objstud" Multiplicity="0..1" />
+          <End Role="objstgr" Type="Self.objstgr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="objstud">
+              <PropertyRef Name="idobjstud" />
+            </Principal>
+            <Dependent Role="objstgr">
+              <PropertyRef Name="idobjstud" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Objstgr_idprofesor">
+          <End Role="profesor" Type="Self.profesor" Multiplicity="0..1" />
+          <End Role="objstgr" Type="Self.objstgr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="profesor">
+              <PropertyRef Name="idprofesor" />
+            </Principal>
+            <Dependent Role="objstgr">
+              <PropertyRef Name="idprofesor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DbRepository" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Catedres" EntityType="Self.Catedre" />
+          <EntitySet Name="grupas" EntityType="Self.grupa" />
+          <EntitySet Name="localits" EntityType="Self.localit" />
+          <EntitySet Name="noteles" EntityType="Self.notele" />
+          <EntitySet Name="objstgrs" EntityType="Self.objstgr" />
+          <EntitySet Name="objstuds" EntityType="Self.objstud" />
+          <EntitySet Name="profesors" EntityType="Self.profesor" />
+          <EntitySet Name="raions" EntityType="Self.raion" />
+          <EntitySet Name="specs" EntityType="Self.spec" />
+          <EntitySet Name="students" EntityType="Self.student" />
+          <EntitySet Name="v_catedre" EntityType="Self.v_catedre" />
+          <EntitySet Name="v_Localit" EntityType="Self.v_Localit" />
+          <EntitySet Name="v_Objstud" EntityType="Self.v_Objstud" />
+          <AssociationSet Name="FK_Catedre_idprofesor" Association="Self.FK_Catedre_idprofesor">
+            <End Role="profesor" EntitySet="profesors" />
+            <End Role="Catedre" EntitySet="Catedres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Objstud_idcatedre" Association="Self.FK_Objstud_idcatedre">
+            <End Role="Catedre" EntitySet="Catedres" />
+            <End Role="objstud" EntitySet="objstuds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Grupa_idprofesor" Association="Self.FK_Grupa_idprofesor">
+            <End Role="profesor" EntitySet="profesors" />
+            <End Role="grupa" EntitySet="grupas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Grupa_idspec" Association="Self.FK_Grupa_idspec">
+            <End Role="spec" EntitySet="specs" />
+            <End Role="grupa" EntitySet="grupas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Objstgr_idgrupa" Association="Self.FK_Objstgr_idgrupa">
+            <End Role="grupa" EntitySet="grupas" />
+            <End Role="objstgr" EntitySet="objstgrs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_idgrupa" Association="Self.FK_Student_idgrupa">
+            <End Role="grupa" EntitySet="grupas" />
+            <End Role="student" EntitySet="students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Localit_idraion" Association="Self.FK_Localit_idraion">
+            <End Role="raion" EntitySet="raions" />
+            <End Role="localit" EntitySet="localits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_idlocalit" Association="Self.FK_Student_idlocalit">
+            <End Role="localit" EntitySet="localits" />
+            <End Role="student" EntitySet="students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notele_idobjstud" Association="Self.FK_Notele_idobjstud">
+            <End Role="objstud" EntitySet="objstuds" />
+            <End Role="notele" EntitySet="noteles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notele_idstudent" Association="Self.FK_Notele_idstudent">
+            <End Role="student" EntitySet="students" />
+            <End Role="notele" EntitySet="noteles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Objstgr_idobjstud" Association="Self.FK_Objstgr_idobjstud">
+            <End Role="objstud" EntitySet="objstuds" />
+            <End Role="objstgr" EntitySet="objstgrs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Objstgr_idprofesor" Association="Self.FK_Objstgr_idprofesor">
+            <End Role="profesor" EntitySet="profesors" />
+            <End Role="objstgr" EntitySet="objstgrs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="colegiuModelStoreContainer" CdmEntityContainer="DbRepository">
+          <EntitySetMapping Name="Catedres">
+            <EntityTypeMapping TypeName="colegiuModel.Catedre">
+              <MappingFragment StoreEntitySet="Catedre">
+                <ScalarProperty Name="idcatedre" ColumnName="idcatedre" />
+                <ScalarProperty Name="nmcatedre" ColumnName="nmcatedre" />
+                <ScalarProperty Name="idprofesor" ColumnName="idprofesor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="grupas">
+            <EntityTypeMapping TypeName="colegiuModel.grupa">
+              <MappingFragment StoreEntitySet="grupa">
+                <ScalarProperty Name="idgrupa" ColumnName="idgrupa" />
+                <ScalarProperty Name="nmgrupa" ColumnName="nmgrupa" />
+                <ScalarProperty Name="anadm" ColumnName="anadm" />
+                <ScalarProperty Name="idprofesor" ColumnName="idprofesor" />
+                <ScalarProperty Name="idspec" ColumnName="idspec" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="localits">
+            <EntityTypeMapping TypeName="colegiuModel.localit">
+              <MappingFragment StoreEntitySet="localit">
+                <ScalarProperty Name="idlocalit" ColumnName="idlocalit" />
+                <ScalarProperty Name="nmlocalit" ColumnName="nmlocalit" />
+                <ScalarProperty Name="idraion" ColumnName="idraion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="noteles">
+            <EntityTypeMapping TypeName="colegiuModel.notele">
+              <MappingFragment StoreEntitySet="notele">
+                <ScalarProperty Name="idnotele" ColumnName="idnotele" />
+                <ScalarProperty Name="idstudent" ColumnName="idstudent" />
+                <ScalarProperty Name="idobjstud" ColumnName="idobjstud" />
+                <ScalarProperty Name="data" ColumnName="data" />
+                <ScalarProperty Name="nota" ColumnName="nota" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="objstgrs">
+            <EntityTypeMapping TypeName="colegiuModel.objstgr">
+              <MappingFragment StoreEntitySet="objstgr">
+                <ScalarProperty Name="idobjstgr" ColumnName="idobjstgr" />
+                <ScalarProperty Name="idgrupa" ColumnName="idgrupa" />
+                <ScalarProperty Name="idobjstud" ColumnName="idobjstud" />
+                <ScalarProperty Name="idprofesor" ColumnName="idprofesor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="objstuds">
+            <EntityTypeMapping TypeName="colegiuModel.objstud">
+              <MappingFragment StoreEntitySet="objstud">
+                <ScalarProperty Name="idobjstud" ColumnName="idobjstud" />
+                <ScalarProperty Name="nmobjstud" ColumnName="nmobjstud" />
+                <ScalarProperty Name="idcatedre" ColumnName="idcatedre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="profesors">
+            <EntityTypeMapping TypeName="colegiuModel.profesor">
+              <MappingFragment StoreEntitySet="profesor">
+                <ScalarProperty Name="idprofesor" ColumnName="idprofesor" />
+                <ScalarProperty Name="nmprofesor" ColumnName="nmprofesor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="raions">
+            <EntityTypeMapping TypeName="colegiuModel.raion">
+              <MappingFragment StoreEntitySet="raion">
+                <ScalarProperty Name="idraion" ColumnName="idraion" />
+                <ScalarProperty Name="nmraion" ColumnName="nmraion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="specs">
+            <EntityTypeMapping TypeName="colegiuModel.spec">
+              <MappingFragment StoreEntitySet="spec">
+                <ScalarProperty Name="idspec" ColumnName="idspec" />
+                <ScalarProperty Name="nmspec" ColumnName="nmspec" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="students">
+            <EntityTypeMapping TypeName="colegiuModel.student">
+              <MappingFragment StoreEntitySet="student">
+                <ScalarProperty Name="idstudent" ColumnName="idstudent" />
+                <ScalarProperty Name="nmstud" ColumnName="nmstud" />
+                <ScalarProperty Name="prenstud" ColumnName="prenstud" />
+                <ScalarProperty Name="patrstud" ColumnName="patrstud" />
+                <ScalarProperty Name="sexstud" ColumnName="sexstud" />
+                <ScalarProperty Name="Ncarnet" ColumnName="Ncarnet" />
+                <ScalarProperty Name="DataNs" ColumnName="DataNs" />
+                <ScalarProperty Name="GSM" ColumnName="GSM" />
+                <ScalarProperty Name="idgrupa" ColumnName="idgrupa" />
+                <ScalarProperty Name="idlocalit" ColumnName="idlocalit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_catedre">
+            <EntityTypeMapping TypeName="colegiuModel.v_catedre">
+              <MappingFragment StoreEntitySet="v_catedre">
+                <ScalarProperty Name="idcatedre" ColumnName="idcatedre" />
+                <ScalarProperty Name="nmcatedre" ColumnName="nmcatedre" />
+                <ScalarProperty Name="idprofesor" ColumnName="idprofesor" />
+                <ScalarProperty Name="nmprofesor" ColumnName="nmprofesor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_Localit">
+            <EntityTypeMapping TypeName="colegiuModel.v_Localit">
+              <MappingFragment StoreEntitySet="v_Localit">
+                <ScalarProperty Name="idlocalit" ColumnName="idlocalit" />
+                <ScalarProperty Name="nmlocalit" ColumnName="nmlocalit" />
+                <ScalarProperty Name="idraion" ColumnName="idraion" />
+                <ScalarProperty Name="nmraion" ColumnName="nmraion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_Objstud">
+            <EntityTypeMapping TypeName="colegiuModel.v_Objstud">
+              <MappingFragment StoreEntitySet="v_Objstud">
+                <ScalarProperty Name="idObjstud" ColumnName="idObjstud" />
+                <ScalarProperty Name="nmObjstud" ColumnName="nmObjstud" />
+                <ScalarProperty Name="idcatedre" ColumnName="idcatedre" />
+                <ScalarProperty Name="nmcatedre" ColumnName="nmcatedre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
